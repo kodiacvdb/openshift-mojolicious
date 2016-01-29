@@ -1,0 +1,79 @@
+apiVersion: v1
+kind: DeploymentConfig
+metadata:
+  annotations:
+    openshift.io/generated-by: OpenShiftNewApp
+  creationTimestamp: null
+  labels:
+    app: openshift-mojolicious
+  name: openshift-mojolicious
+spec:
+  replicas: 1
+  selector:
+    app: openshift-mojolicious
+    deploymentconfig: openshift-mojolicious
+  strategy:
+    resources: {}
+    rollingParams:
+      intervalSeconds: 1
+      maxSurge: 25%
+      maxUnavailable: 25%
+      timeoutSeconds: 600
+      updatePeriodSeconds: 1
+    type: Rolling
+  template:
+    metadata:
+      annotations:
+        openshift.io/generated-by: OpenShiftNewApp
+      creationTimestamp: null
+      labels:
+        app: openshift-mojolicious
+        deploymentconfig: openshift-mojolicious
+    spec:
+      output:
+        to:
+          kind: ImageStreamTag
+          name: openshift-mojolicious:latest
+      resources: {}
+      source:
+        git:
+          ref: master
+          uri: https://github.com/ure/openshift-mojolicious.git
+        type: Git
+      strategy:
+        dockerStrategy:
+          from:
+            kind: ImageStreamTag
+            name: centos:7
+        type: Docker
+      containers:
+      - image: openshift-mojolicious
+        imagePullPolicy: Always
+        name: openshift-mojolicious
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        volumeMounts:
+        - mountPath: /var/www/html
+          name: mojolicious-data
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - name: mojolicious-data
+        persistentVolumeClaim:
+          claimName: mojolicious-data
+  triggers:
+  - type: ConfigChange
+  - imageChangeParams:
+      automatic: true
+      containerNames:
+      - openshift-mojolicious
+      from:
+        kind: ImageStreamTag
+        name: openshift-mojolicious:latest
+    type: ImageChange
+status: {}

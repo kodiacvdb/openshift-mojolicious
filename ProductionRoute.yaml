@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Route
+metadata:
+  name: www.mymojolicioussite.com
+spec:
+  host: www.mymojolicioussite.com
+  to:
+    kind: Service
+    name: openshift-mojolicious
