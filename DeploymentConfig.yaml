@@ -45,7 +45,7 @@ spec:
         imagePullPolicy: Always
         name: openshift-mojolicious
         ports:
-        - containerPort: 8080
+        - containerPort: 3000
           protocol: TCP
         resources: {}
         terminationMessagePath: /dev/termination-log
