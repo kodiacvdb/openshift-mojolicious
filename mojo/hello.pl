@@ -2,6 +2,6 @@
 
 use Mojolicious::Lite;
 
-get '/' => {text => 'I ♥ Mojolicious!'};
+get '/' => {text => 'I very ♥ Mojolicious!'};
 
 app->start;
