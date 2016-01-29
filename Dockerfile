@@ -10,13 +10,13 @@ COPY run_mojolicious.sh /
 COPY mojo/hello.pl /var/mojo/hello.pl
 
 USER 997
-EXPOSE 8080
+EXPOSE 3000
 CMD ["/bin/sh", "/run_mojolicious.sh"]
 
 # Set labels used in OpenShift to describe the builder images
 LABEL io.k8s.description="Mojolicious" \
       io.k8s.display-name="mojolicious centos7 epel" \
-      io.openshift.expose-services="8080:http" \
+      io.openshift.expose-services="3000:http" \
       io.openshift.tags="builder,mojolicious,perl" \
       io.openshift.min-memory="1Gi" \
       io.openshift.min-cpu="1" \
