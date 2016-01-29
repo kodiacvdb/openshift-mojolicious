@@ -9,8 +9,8 @@ You need oc (li tool) locally installed
 ###Create a new project
 ```sh
 oc new-project openshift-mojolicious \
-    --description="Wordpress on openshift" \
-    --display-name="Wordpress"
+    --description="mojolicious on openshift" \
+    --display-name="Mojolicious"
 ```
 ###Clone the repository
 ```sh
