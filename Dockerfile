@@ -7,6 +7,8 @@ RUN cpanm Mojolicious
 
 COPY run_mojolicious.sh /
 
+COPY mojo/hello.pl /var/mojo/hello.pl
+
 RUN mkdir /var/mojo
 
 USER 997

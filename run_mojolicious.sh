@@ -11,4 +11,4 @@ if [ ! -f /var/www/html/index.php ]; then
 fi
 
 #run mojolicious
-sleep 10h
+morbo /var/mojo/hello.pl
