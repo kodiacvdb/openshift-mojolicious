@@ -9,8 +9,6 @@ COPY run_mojolicious.sh /
 
 RUN mkdir /var/mojo
 
-VOLUME /var/mojo
-
 USER 997
 EXPOSE 8080
 CMD ["/bin/sh", "/run_mojolicious.sh"]

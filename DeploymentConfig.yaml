@@ -50,7 +50,7 @@ spec:
         resources: {}
         terminationMessagePath: /dev/termination-log
         volumeMounts:
-        - mountPath: /var/www/html
+        - mountPath: /var/mojo
           name: mojolicious-data
       dnsPolicy: ClusterFirst
       restartPolicy: Always
