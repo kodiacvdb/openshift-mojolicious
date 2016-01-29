@@ -5,7 +5,7 @@ RUN yum -y install epel-release && yum -y install pwgen supervisor bash-completi
 
 RUN cpanm Mojolicious
 
-COPY run_mojolicious.sh /
+COPY run_mojolicious.sh
 
 RUN mkdir /var/mojo
 
